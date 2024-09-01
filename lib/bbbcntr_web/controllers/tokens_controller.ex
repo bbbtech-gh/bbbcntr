@@ -12,17 +12,19 @@ defmodule BbbcntrWeb.TokensController do
   end
 
   def create(conn, %{
-      "email" => email,
-      "scopes" => scope,
-      "client" => client
-  }) do
-    token = "abcd"
-    with {:ok, %Tokens{} = tokens} <- Auth.create_tokens(%{
         "email" => email,
         "scopes" => scope,
-        "client" => client,
-        "token" => token
-    }) do
+        "client" => client
+      }) do
+    token = "abcd"
+
+    with {:ok, %Tokens{} = tokens} <-
+           Auth.create_tokens(%{
+             "email" => email,
+             "scopes" => scope,
+             "client" => client,
+             "token" => token
+           }) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/tokens/#{tokens}")

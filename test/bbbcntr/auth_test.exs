@@ -21,7 +21,12 @@ defmodule Bbbcntr.AuthTest do
     end
 
     test "create_tokens/1 with valid data creates a tokens" do
-      valid_attrs = %{token: "some token", client: "some client", email: "some email", scopes: %{}}
+      valid_attrs = %{
+        token: "some token",
+        client: "some client",
+        email: "some email",
+        scopes: %{}
+      }
 
       assert {:ok, %Tokens{} = tokens} = Auth.create_tokens(valid_attrs)
       assert tokens.token == "some token"
@@ -36,7 +41,13 @@ defmodule Bbbcntr.AuthTest do
 
     test "update_tokens/2 with valid data updates the tokens" do
       tokens = tokens_fixture()
-      update_attrs = %{token: "some updated token", client: "some updated client", email: "some updated email", scopes: %{}}
+
+      update_attrs = %{
+        token: "some updated token",
+        client: "some updated client",
+        email: "some updated email",
+        scopes: %{}
+      }
 
       assert {:ok, %Tokens{} = tokens} = Auth.update_tokens(tokens, update_attrs)
       assert tokens.token == "some updated token"
@@ -95,7 +106,12 @@ defmodule Bbbcntr.AuthTest do
 
     test "update_clients/2 with valid data updates the clients" do
       clients = clients_fixture()
-      update_attrs = %{domain: "some updated domain", email: "some updated email", detail: "some updated detail"}
+
+      update_attrs = %{
+        domain: "some updated domain",
+        email: "some updated email",
+        detail: "some updated detail"
+      }
 
       assert {:ok, %Clients{} = clients} = Auth.update_clients(clients, update_attrs)
       assert clients.domain == "some updated domain"

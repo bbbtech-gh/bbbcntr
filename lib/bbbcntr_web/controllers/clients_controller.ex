@@ -11,8 +11,9 @@ defmodule BbbcntrWeb.ClientsController do
     render(conn, :index, clients: clients)
   end
 
-  def create(conn, %{"email" => email, "detail"=>detail, "domain"=>domain}) do
-    with {:ok, %Clients{} = clients} <- Auth.create_clients(%{"email" => email, "detail"=>detail, "domain"=>domain}) do
+  def create(conn, %{"email" => email, "detail" => detail, "domain" => domain}) do
+    with {:ok, %Clients{} = clients} <-
+           Auth.create_clients(%{"email" => email, "detail" => detail, "domain" => domain}) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/clients/#{clients}")
