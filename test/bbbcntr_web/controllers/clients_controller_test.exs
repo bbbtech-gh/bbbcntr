@@ -30,13 +30,15 @@ defmodule BbbcntrWeb.ClientsControllerTest do
 
   describe "create clients" do
     test "renders clients when data is valid", %{conn: conn} do
-      conn = post(
-        conn, 
-        ~p"/api/clients", 
-        email: @create_attrs[:email],
-        detail: @create_attrs[:detail],
-        domain: @create_attrs[:domain]
-      )
+      conn =
+        post(
+          conn,
+          ~p"/api/clients",
+          email: @create_attrs[:email],
+          detail: @create_attrs[:detail],
+          domain: @create_attrs[:domain]
+        )
+
       assert %{"id" => id} = json_response(conn, 201)["data"]
 
       conn = get(conn, ~p"/api/clients/#{id}")
@@ -50,13 +52,15 @@ defmodule BbbcntrWeb.ClientsControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(
-        conn, 
-        ~p"/api/clients", 
-        email: @invalid_attrs[:email],
-        detail: @invalid_attrs[:detail],
-        domain: @invalid_attrs[:domain]
-      )
+      conn =
+        post(
+          conn,
+          ~p"/api/clients",
+          email: @invalid_attrs[:email],
+          detail: @invalid_attrs[:detail],
+          domain: @invalid_attrs[:domain]
+        )
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

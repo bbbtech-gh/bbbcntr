@@ -32,13 +32,15 @@ defmodule BbbcntrWeb.TokensControllerTest do
 
   describe "create tokens" do
     test "renders tokens when data is valid", %{conn: conn} do
-      conn = post(
-        conn, 
-        ~p"/api/tokens", 
-        email: @create_attrs[:email],
-        client: @create_attrs[:client],
-        scopes: @create_attrs[:scopes]
-      )
+      conn =
+        post(
+          conn,
+          ~p"/api/tokens",
+          email: @create_attrs[:email],
+          client: @create_attrs[:client],
+          scopes: @create_attrs[:scopes]
+        )
+
       assert %{"id" => id} = json_response(conn, 201)["data"]
 
       conn = get(conn, ~p"/api/tokens/#{id}")
@@ -53,13 +55,15 @@ defmodule BbbcntrWeb.TokensControllerTest do
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(
-        conn, 
-        ~p"/api/tokens", 
-        email: @invalid_attrs[:email],
-        client: @invalid_attrs[:client],
-        scopes: @invalid_attrs[:scopes]
-      )
+      conn =
+        post(
+          conn,
+          ~p"/api/tokens",
+          email: @invalid_attrs[:email],
+          client: @invalid_attrs[:client],
+          scopes: @invalid_attrs[:scopes]
+        )
+
       assert json_response(conn, 422)["errors"] != %{}
     end
   end

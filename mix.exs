@@ -10,20 +10,22 @@ defmodule Bbbcntr.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-      test_coverage: [ignore_modules: [
-        Bbbcntr.Token,
-        BbbcntrWeb.CoreComponents,
-        BbbcntrWeb.Gettext,
-        BbbcntrWeb.Layouts,
-        BbbcntrWeb.PageHTML,
-        Bbbcntr.Repo,
-        BbbcntrWeb.ErrorHTML,
-        BbbcntrWeb.FallbackController,
-        Bbbcntr.DataCase,
-        Bbbcntr.Application,
-        BbbcntrWeb.Telemetry,
-        Bbbcntr.Auth
-      ]],
+      test_coverage: [
+        ignore_modules: [
+          Bbbcntr.Token,
+          BbbcntrWeb.CoreComponents,
+          BbbcntrWeb.Gettext,
+          BbbcntrWeb.Layouts,
+          BbbcntrWeb.PageHTML,
+          Bbbcntr.Repo,
+          BbbcntrWeb.ErrorHTML,
+          BbbcntrWeb.FallbackController,
+          Bbbcntr.DataCase,
+          Bbbcntr.Application,
+          BbbcntrWeb.Telemetry,
+          Bbbcntr.Auth
+        ]
+      ]
     ]
   end
 
@@ -71,7 +73,8 @@ defmodule Bbbcntr.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.2"}
+      {:bandit, "~> 1.2"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
