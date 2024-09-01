@@ -1,4 +1,6 @@
-# Bbbcntr
+# BBBCntr
+
+## An account system for a free network of apps (todo)
 
 To start your Phoenix server:
 
