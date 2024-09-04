@@ -1,6 +1,7 @@
 defmodule Bbbcntr.Token do
   use Ecto.Schema
   import Ecto.Changeset
+  @moduledoc false
 
   schema "tokens" do
     field :token, :string

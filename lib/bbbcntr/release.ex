@@ -1,5 +1,6 @@
 defmodule BBBcntr.Release do
   @app :bbbcntr
+  @moduledoc false
 
   def migrate(opts \\ [all: true]) do
     for repo <- repos() do
@@ -13,7 +14,7 @@ defmodule BBBcntr.Release do
 
   defp repos do
     Application.load(@app)
-    IO.inspect(Application.fetch_env!(@app, :ecto_repos))
+    # IO.inspect(Application.fetch_env!(@app, :ecto_repos))
     Application.fetch_env!(@app, :ecto_repos)
   end
 
@@ -45,7 +46,7 @@ defmodule BBBcntr.Release do
   defp repo_migrations_path(repo) do
     config = repo.config()
     priv = config[:priv] || "priv/#{repo |> Module.split() |> List.last() |> Macro.underscore()}"
-    IO.inspect(config |> Keyword.fetch!(:otp_app) |> Application.app_dir() |> Path.join(priv))
+    # IO.inspect(config |> Keyword.fetch!(:otp_app) |> Application.app_dir() |> Path.join(priv))
     config |> Keyword.fetch!(:otp_app) |> Application.app_dir() |> Path.join(priv)
   end
 

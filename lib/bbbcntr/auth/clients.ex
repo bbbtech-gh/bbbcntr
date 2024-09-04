@@ -2,6 +2,8 @@ defmodule Bbbcntr.Auth.Clients do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @moduledoc false
+
   schema "clients" do
     field :domain, :string
     field :email, :string
