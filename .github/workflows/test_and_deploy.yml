@@ -54,6 +54,9 @@ jobs:
       run: mix credo
 
   deploy:
+    permissions:
+      contents: read
+      issues: write
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     needs: build
